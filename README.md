@@ -7,7 +7,7 @@ Version: 1.0
 
 Date: 2022-02-04
 
-Authors: Swapnil Kumar, Grace Pauline D, Vaibhav Vindal (Correspondence Email ID: <vaibhav@uohyd.ac.in>)
+Authors: Swapnil Kumar, Grace Pauline D, and Vaibhav Vindal
 
 Maintainer: Swapnil Kumar
 
