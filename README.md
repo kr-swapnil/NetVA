@@ -1,6 +1,7 @@
 # NetVA
 <i> An R package for network vulnerability analysis </i>
 
+<b> General information </b>:
 Version: 1.0
 
 Date: 2022-02-04
@@ -17,7 +18,7 @@ Imports: parallel (>= 0.1)
 
 <b> Installation </b>: The NetVA package can be installed using <b> devtools::install_github("kr-swapnil/NetVA") </b> on R console.
 
-<b> Usage </b>:
+<b> Available functions </b>:
 	netva.mc(): Performs vulnerability analysis with parallel processing (only compatible on Linux/macOS machine).
 	
   netva.sc(): Performs vulnerability analysis compatible on any Linux, macOS or Windows based machines.
