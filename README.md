@@ -19,7 +19,7 @@ Imports: parallel (>= 0.1)
 
 <b>Installation</b>: The NetVA package can be installed on R console using:
 
-devtools::install_github("kr-swapnil/NetVA")
+<centre>devtools::install_github("kr-swapnil/NetVA")</centre>
 
 <b>Available functions</b>: netva.mc(): Performs vulnerability analysis with parallel processing (only compatible on Linux/macOS machine).
 	
