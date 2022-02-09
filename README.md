@@ -18,15 +18,14 @@ Imports: parallel (>= 0.1)
 <b> Installation </b>: The NetVA package can be installed using <b> devtools::install_github("kr-swapnil/NetVA") </b> on R console.
 
 <b> Usage </b>:
-	
 	netva.mc(): Performs vulnerability analysis with parallel processing (only compatible on Linux/macOS machine).
 	
-  	netva.sc(): Performs vulnerability analysis compatible on any Linux, macOS or Windows based machines.
+  netva.sc(): Performs vulnerability analysis compatible on any Linux, macOS or Windows based machines.
   
-  	detectVPs(): Detects VPs based on the five-point summary of boxplot for each topological properties included in the package.
+  detectVPs(): Detects VPs based on the five-point summary of boxplot for each topological properties included in the package.
   
-  	detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule.
+  detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule.
   
-  	detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule.
+  detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule.
 	
   
