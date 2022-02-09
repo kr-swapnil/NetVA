@@ -17,7 +17,7 @@ Description: Performs network vulnerability analysis and help to identify vulner
 
 Installation: The NetVA package can be installed using <devtools::install_github("kr-swapnil/NetVA")> on R console.
 
-<b Usage /b>:
+<b Usage b>:
 	
 	netva.mc(): Performs vulnerability analysis with parallel processing (only compatible on Linux/macOS machine).
   
@@ -28,4 +28,6 @@ Installation: The NetVA package can be installed using <devtools::install_github
   	detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule.
   
   	detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule.
+	
+</b>
   
