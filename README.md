@@ -17,7 +17,7 @@ Description: Performs network vulnerability analysis and help to identify vulner
 
 Installation: The NetVA package can be installed using <devtools::install_github("kr-swapnil/NetVA")> on R console.
 
-<b Usage b/>:
+<b Usage /b>:
 	
 	netva.mc(): Performs vulnerability analysis with parallel processing (only compatible on Linux/macOS machine).
   
