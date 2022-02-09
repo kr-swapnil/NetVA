@@ -1,5 +1,5 @@
 # NetVA
-An R package for network vulnerability analysis
+<i> An R package for network vulnerability analysis </i>
 
 Version: 1.0
 
@@ -20,7 +20,7 @@ Imports: parallel (>= 0.1)
 <b> Usage </b>:
 	
 	netva.mc(): Performs vulnerability analysis with parallel processing (only compatible on Linux/macOS machine).
-  
+	
   	netva.sc(): Performs vulnerability analysis compatible on any Linux, macOS or Windows based machines.
   
   	detectVPs(): Detects VPs based on the five-point summary of boxplot for each topological properties included in the package.
