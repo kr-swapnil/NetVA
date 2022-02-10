@@ -7,10 +7,6 @@ Version: 1.0
 
 Date: 2022-02-04
 
-Authors: Swapnil Kumar, Grace Pauline D, and Vaibhav Vindal
-
-Maintainer: Swapnil Kumar
-
 Depends: R (>= 3.6.3), igraph (>= 1.2.5)
 
 Imports: parallel (>= 0.1)
@@ -23,7 +19,7 @@ Imports: parallel (>= 0.1)
 
 <b>Available functions</b>: netva.mc(): Performs vulnerability analysis with parallel processing (only compatible on Linux/macOS machine).
 	
-  netva.sc(): Performs vulnerability analysis compatible on any Linux, macOS or Windows based machines.
+  netva.sc(): Performs vulnerability analysis without parallel processing (compatible on any Linux, macOS or Windows based machines.
   
   detectVPs(): Detects VPs based on the five-point summary of boxplot for each topological properties included in the package.
   
