@@ -19,11 +19,11 @@
 > netva.res <- netva(v[7], bc.net, "full")  #Only 7th protein
 > netva.res <- netva(v[c(1, 6, 7)], bc.net, "full") #Three proteins, i.e., 1st, 6th and 7th at once
 
-#Run netva using multiple core option, compatible only for all Linux and macOS machines
-> netva.res <- netva.mc(vl, bc.net, "full", ncore = 36)
+#Run netva using multiple core option for all proteins one by one (compatible only for all Linux and macOS machines)
+> netva.res <- netva.mc(v, bc.net, "full", ncore = 36)
 
-#Run netva using single core/default option, compatible for all Linux, macOS and Windows machines
-> netva.res <- netva.sc(vl, bc.net, "full")
+#Run netva using single core/default option for all proteins one by one (compatible for all Linux, macOS and Windows machines)
+> netva.res <- netva.sc(v, bc.net, "full")
 
 #Detect vulnerable proteins based on each property one by one
 > anc.outliers <- detectVPs(v, netva.res[,1], "ANC") #Average node connectivity
@@ -39,3 +39,6 @@
 #Detect hubs and bottlenecks
 > hubs <- detectHubs(bc.net)
 > bottlenecks <- detectBottlenecks(bc.net)
+
+#Calculate value of heterogeneity of a network
+> net.het = heterogeneity(bc.net)
