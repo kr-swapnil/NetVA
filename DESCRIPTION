@@ -1,17 +1,10 @@
 Package: NetVA
-Title: Network vulnerability analysis
+Title: An R package for network vulnerability analysis
 Version: 1.0
 Date: 2022-02-04
-Author: Swapnil Kumar, Vaibhav Vindal <vaibhav@uohyd.ac.in>
-Authors@R: 
-    person("Swapnil", "Kumar", , "swapnil.kr@yahoo.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-2433-1678"))
-           person("Grace", "Pauline D", , "gracepaulined@gmail.com", role = c("aut"),
-           comment = c(ORCID = "NA"))
-           person("Vaibhav", "Vindal", , "vaibhav@uohyd.ac.in", role = c("aut"),
-           comment = c(ORCID = "0000-0002-3855-0222"))
+Author: Swapnil Kumar, Grace Pauline D, Vaibhav Vindal <vaibhav@uohyd.ac.in>
 Maintainer: Swapnil Kumar <swapnil.kr@yahoo.com>
-Depends: R (>= 3.6.3), igraph (>= 1.2.5)
+Depends: R (>= 3.6.0), igraph (>= 1.2.5)
 Imports: parallel (>= 0.1)
 Description: Performs network vulnerability analysis and help to identify vulnerable or critical proteins (VPs) for a given protein-protein interaction (PPI) network. Hence, network vulnerability analysis is an approach to identify VPs by assessing networks based on its topological properties. The VPs are identified based on nine different topological properties calculated for networks as constructed by deleting all nodes/proteins, one by one, from the original network under investigation. This package provides the capabilities to use multiple cores on Linux/macOS to parallelize the process using parallel package. It also helps to identify hubs and bottlenecks present in the network based on the well-known pareto-principle of 80:20 rule.
 License: GPL (>= 3)
