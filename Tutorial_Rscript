@@ -1,12 +1,12 @@
 #Load NetVA and igraph packages
-> library(NetVA)
-> library(igraph)
+>library(NetVA)
+>library(igraph)
 
 #Load protein-protein interactions of breast cancer as data.frame
 > bc.ppi <- load_bcppi()
 
 #Convert the dataframe to an igraph graph object
-> bc.net <- bc.net = graph.data.frame(bc.ppi, directed = FALSE)
+> bc.net <- graph.data.frame(bc.ppi, directed = FALSE)
 
 #Store name of all vertices in v as character vector
 > v <- vertex_attr(bc.net)$name
