@@ -1,0 +1,3 @@
+> netva.res <- netva.mc(vl, bc.net, "full", ncore = 36)
+
+> anc.outliers <- detectVPs(netva.res[,1], "ANC")
