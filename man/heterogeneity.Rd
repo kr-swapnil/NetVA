@@ -7,10 +7,10 @@
 heterogeneity(net)
 }
 \arguments{
-\item{Takes}{input an igraph graph object}
+\item{Takes}{input an igraph graph object.}
 }
 \value{
-A single numeric value
+Returns a single numeric value.
 }
 \description{
 Calculates value of heterogeneity for a given network

@@ -7,7 +7,7 @@
 load_bcppi()
 }
 \value{
-A dataframe containing protein-protein interactions data of breast cancer
+A dataframe containing protein-protein interactions data of breast cancer.
 }
 \description{
 Source: CancerNet database (http://bis.zju.edu.cn/CancerNet)

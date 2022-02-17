@@ -7,7 +7,7 @@
 detectHubs(net, p = 20)
 }
 \arguments{
-\item{net}{Takes input an igraph graph object}
+\item{net}{An igraph graph object.}
 
 \item{p}{Value of percent of nodes/proteins to be considered for the determination of degree cutoff. By default value is 20\%. It is an optional parameter.}
 }

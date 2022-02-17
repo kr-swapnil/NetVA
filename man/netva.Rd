@@ -7,17 +7,17 @@
 netva(v, net, type)
 }
 \arguments{
-\item{v}{Name of one node or protein to be deleted}
+\item{v}{Name of any one node/protein to be deleted, or a character vector of names to delete more than one nodes or proteins.}
 
-\item{net}{Takes input an igraph graph object}
+\item{net}{An igraph graph object.}
 
-\item{type}{A keyword either "full" or "cluster" for consideration of complete network or only the largest cluster}
+\item{type}{A keyword either "full" or "cluster" for consideration of complete network or only the largest cluster.}
 }
 \value{
-A dataframe of one row and ten columns
+A numeric vector of nine elements corresponding to nine different topological properties.
 }
 \description{
-This function performs deletion of nodes one by one and calculation of average node connectivity, average path length, articulation
-point, network centralization, network density, network diameter, transitivity (clustering coefficient), betweenness and heterogeneity
-of resultant networks.
+This function performs deletion of one or more than one nodes and calculates nine different topological properties such as average node
+connectivity, average path length, articulation point, network centralization, network density, network diameter, transitivity
+(clustering coefficient), betweenness and heterogeneity for the resultant network.
 }

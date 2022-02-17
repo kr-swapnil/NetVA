@@ -7,14 +7,14 @@
 netva.sc(vl, net, type)
 }
 \arguments{
-\item{vl}{A vector of node or protein names}
+\item{vl}{A vector of node or protein names.}
 
-\item{net}{Takes input an igraph graph object}
+\item{net}{An igraph graph object.}
 
-\item{type}{A keyword either "full" or "cluster" for consideration of complete network or only the largest cluster}
+\item{type}{A keyword either "full" or "cluster" for consideration of complete network or only the largest cluster.}
 }
 \value{
-A dataframe having number of rows equal to the number of proteins in consideration and ten columns
+A dataframe having number of rows equal to the number of proteins in consideration and nine columns.
 }
 \description{
 This function performs deletion of nodes one by one and calculation of average node connectivity, average path length, articulation

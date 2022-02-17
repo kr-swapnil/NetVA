@@ -7,14 +7,14 @@
 detectVPs(v, x, p)
 }
 \arguments{
-\item{v}{Character vector containing names for all nodes/proteins of the given network}
+\item{v}{Character vector containing names for all nodes/proteins of the given network.}
 
 \item{x}{Numeric vector containing values of one topological property for all nodes/proteins of the given network. Where, the length of v and x should be equal. Note: v and x should be in the same order i.e. position of one particular node in v and position of value of topological property for that node in x should be the same.}
 
 \item{p}{Case sensitive. Keyword for topological property based on which users want to identify VPs. Keyword should be one from the following keywords: ANC (Average node connectivity), ND (Network density), NC (Network centralization), APL (Average path length), BET (Betweenness), AP (Articulation point), NDR (Network diameter), CC (Clustering coefficient), and HET (Heterogeneity).}
 }
 \value{
-A character vector containing all possible VPs
+A character vector containing all possible VPs.
 }
 \description{
 This function detects vulnerable proteins (VPs) based on five-point summary of boxplot.
