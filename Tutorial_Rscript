@@ -41,4 +41,4 @@
 > bottlenecks <- detectBottlenecks(bc.net)
 
 #Calculate value of heterogeneity of a network
-> net.het = heterogeneity(bc.net)
+> net.het <- heterogeneity(bc.net)
