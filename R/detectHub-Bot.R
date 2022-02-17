@@ -1,7 +1,7 @@
 #======================================================================================================
 #' Identify all possible hubs based on pareto principle of 80:20 rule (by default) for a given network
 #'
-#' @param net Takes input an igraph graph object
+#' @param net An igraph graph object.
 #' @param p Value of percent of nodes/proteins to be considered for the determination of degree cutoff. By default value is 20%. It is an optional parameter.
 #' @return A numeric vector containing all possible hubs with hub proteins' names and corresponding degree values as identified in the given network.
 #' @export
@@ -17,7 +17,7 @@ detectHubs <- function(net, p = 20){
 
 #' Identify all possible bottlenecks based on pareto principle of 80:20 rule (by default) for a given network
 #'
-#' @param net Takes input an igraph graph object
+#' @param net An igraph graph object.
 #' @param p Value of percent of nodes/proteins to be considered for the determination of betweenness cutoff. By default value is 20%. It is an optional parameter.
 #' @return A numeric vector containing all possible bottlenecks with bottleneck proteins' names and corresponding betweenness values as identified in the given network.
 #' @export
@@ -30,4 +30,5 @@ detectBottlenecks <- function(net, p = 20){
 	bottlenecks <- b[which(b > t20n.ab)]
 	return(bottlenecks)
 }
+
 
