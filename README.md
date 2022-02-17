@@ -7,7 +7,7 @@ Version: 1.0
 
 Date: 2022-02-04
 
-Depends: R (>= 3.6.3), igraph (>= 1.2.5)
+Depends: R (>= 3.6.0), igraph (>= 1.2.5)
 
 Imports: parallel (>= 0.1)
 
@@ -27,4 +27,4 @@ Imports: parallel (>= 0.1)
   
   detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule.
 	
-	
+  heterogeneity(): Calculates the value of heterogeneity for a given network.
