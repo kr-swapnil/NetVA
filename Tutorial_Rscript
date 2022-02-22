@@ -1,3 +1,13 @@
+#Installation of NetVA package
+##NetVA depends on igraph package. Therefore, the users have to install igraph first before installing NetVA.
+install.packages("igraph")
+
+##For installing the NetVA from GitHub, the users will need devtools package. If the users have devtools 
+##installed already in their systems, then directly can proceed for the installation of the NetVA.
+##If devtools is not installed, then the users will have to install it first before installing the NetVA.
+install.packages("devtools")
+devtools::install_github("kr-swapnil/NetVA")
+
 #Load NetVA and igraph packages
 > library(NetVA)
 > library(igraph)
