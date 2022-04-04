@@ -1,5 +1,5 @@
-# NetVA
-<i> An R package for network vulnerability analysis </i>
+# NetVIA
+<i> An R package for network vulnerability and influence analysis </i>
 
 <b>General information</b>:
 
