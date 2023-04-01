@@ -44,6 +44,20 @@ devtools::install_github("kr-swapnil/NetVA")
 > cc.outliers <- detectVPs(v, netva.res[,8], "CC") #Clustering coefficient
 > het.outliers <- detectVPs(v, netva.res[,9], "HET") #Heterogeneity
 
+#Vulnerability analysis for the detection of most vulnerable edges i.e. node pairs
+> v.list = combn(v, 2, simplify = FALSE)
+> netva.res <- netva(v.list, bc.net, ncore = 36)
+
+> anc.outliers <- detectVPs(v, netva.res[,1], "ANC") #Average node connectivity
+> nd.outliers <- detectVPs(v, netva.res[,2], "ND") #Network density
+> nc.outliers <- detectVPs(v, netva.res[,3], "NC") #Network centralization
+> apl.outliers <- detectVPs(v, netva.res[,4], "APL") #Average path length
+> bet.outliers <- detectVPs(v, netva.res[,5], "BET") #Betweenness centrality
+> ap.outliers <- detectVPs(v, netva.res[,6], "AP") #Articulation point
+> ndr.outliers <- detectVPs(v, netva.res[,7], "NDR") #Network diameter
+> cc.outliers <- detectVPs(v, netva.res[,8], "CC") #Clustering coefficient
+> het.outliers <- detectVPs(v, netva.res[,9], "HET") #Heterogeneity
+
 #Detect hubs and bottlenecks
 > hubs <- detectHubs(bc.net)
 > bottlenecks <- detectBottlenecks(bc.net)
