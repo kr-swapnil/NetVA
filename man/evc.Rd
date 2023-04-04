@@ -2,7 +2,7 @@
 % Please edit documentation in R/evc.R
 \name{evc}
 \alias{evc}
-\title{Escape velocity centrality (normal and extended version)}
+\title{Calculates escape velocity centrality (normal and extended version)}
 \usage{
 evc(g, alpha = 1, mode = "all")
 }

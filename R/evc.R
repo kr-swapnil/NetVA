@@ -1,4 +1,5 @@
-#' Escape velocity centrality (normal and extended version)
+#========================================================================================================================================
+#' Calculates escape velocity centrality (normal and extended version)
 #'
 #' Calculates escape velocity centrality (EVC, evc) and extended escape velocity centrality (EVC+, evc.plus)
 #' of all vertices in the network under study [Ullah et al., 2022].

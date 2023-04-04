@@ -1,0 +1,3 @@
+#Don’t include bca_ppi.R files in the package
+#When build and install the package, ignore the folder data-raw
+^data-raw$
