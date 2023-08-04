@@ -6,16 +6,17 @@
 #' second a keyword for topological property based on which users want to identify VNs.
 #' Different keywords for nine topological properties implemented in NetVA current version 
 #' are as follows: ANC (Average node connectivity), ND (Network density), NC (Network 
-#' centralization), APL (Average path length), BET (Betweenness), AP (Articulation 
-#' point), NDR (Network diameter), CC (Clustering coefficient), and HET (Heterogeneity).
+#' centralization), APL (Average path length), ABC (Average betweenness), ACC (Average closeness), AP (Articulation 
+#' point), NDR (Network diameter), CC (Clustering coefficient), GE (Global efficiency), and HET (Heterogeneity).
 #'
 #' @param v Character vector containing names for all nodes of the given network.
 #' @param x Numeric vector containing values of one topological property for all nodes of the given network. Where, the length of 
 #' v and x should be equal. Note: v and x should be in the same order i.e. position of one particular node in v and position of value of 
 #' topological property for that node in x should be the same.
 #' @param p Case sensitive. Keyword for topological property based on which users want to identify VNs. Keyword should be one from the 
-#' following keywords: ANC (Average node connectivity), ND (Network density), NC (Network centralization), APL (Average path length), BET 
-#' (Betweenness), AP (Articulation point), NDR (Network diameter), CC (Clustering coefficient), and HET (Heterogeneity).
+#' following keywords: ACC (Average closeness), ANC (Average node connectivity), ND (Network density), NC (Network centralization), APL 
+#' (Average path length), ABC (Average betweenness), AP (Articulation point), NDR (Network diameter), CC (Clustering coefficient), GE 
+#' (Global efficiency), and HET (Heterogeneity).
 #' @return A character vector containing all possible VNs.
 #' @export
 detectVNs <- function(v, x, p){
@@ -42,7 +43,7 @@ detectVNs <- function(v, x, p){
 	}else if(p == "APL"){
 		upper.limit <- Q3 + 1.5*IQR
 		out <- which(x > upper.limit)
-	}else if(p == "BET"){
+	}else if(p == "ABC"){
 		lower.limit <- Q1 - 1.5*IQR
 		out <- which(x < lower.limit)
 	}else if(p == "AP"){
@@ -55,6 +56,12 @@ detectVNs <- function(v, x, p){
 		lower.limit <- Q1 - 1.5*IQR
 		out <- which(x < lower.limit)
 	}else if(p == "HET"){
+		lower.limit <- Q1 - 1.5*IQR
+		out <- which(x < lower.limit)
+	}else if(p == "ACC"){
+		lower.limit <- Q1 - 1.5*IQR
+		out <- which(x < lower.limit)
+	}else if(p == "GE"){
 		lower.limit <- Q1 - 1.5*IQR
 		out <- which(x < lower.limit)
 	}else{

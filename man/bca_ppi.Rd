@@ -3,7 +3,7 @@
 \docType{data}
 \name{bca_ppi}
 \alias{bca_ppi}
-\title{A protein-protein interactions dataset of breast cancer from CancerNet database.}
+\title{A protein-protein interactions (PPIs) dataset of breast cancer from CancerNet database. This PPIs dataset contains 143751 edges (interactions) among 10597 nodes (proteins).}
 \description{
 A protein-protein interactions dataset of breast cancer
 }

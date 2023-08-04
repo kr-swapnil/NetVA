@@ -1,21 +1,28 @@
 Package: NetVA
+Type: Package
 Title: An R package for network vulnerability and influence analysis
-Version: 1.0
+Version: 1.0.0
 Date: 2022-02-04
-Author: Xyz <xyz@mail.com>
-Maintainer: Xyz <xyz@mail.com>
-Depends: 
-    R (>= 2.10),
-    igraph
+Author: Swapnil Kumar, Grace Pauline, Vaibhav Vindal
+Maintainer: Swapnil Kumar <swapnil.kr@yahoo.com>
+Depends: R (>= 3.0.0), igraph
 Imports: parallel
-Description: Performs network vulnerability analysis and help to identify vulnerable or critical proteins (VPs) for a given protein-protein interaction (PPI) network. Hence, network vulnerability analysis is an approach to identify VPs by assessing networks based on its topological properties. The VPs are identified based on nine different topological properties calculated for networks as constructed by deleting all nodes/proteins, one by one, from the original network under investigation. Further, it helps to identify influential proteins in a given network based on the escape velocity centrality (EVC) and extended EVC (EVC+). This package provides the capabilities to use multiple cores on Linux/macOS to parallelize the process using parallel package. It also helps to identify hubs and bottlenecks present in the network based on the well-known pareto-principle of 80:20 rule.
+Description: Performs network vulnerability analysis and help to identify vulnerable or critical proteins (VPs) and protein pairs (VPPs) 
+	for a given protein-protein interaction (PPI) network. Hence, network vulnerability analysis is an approach to identify VPs and 
+	VPPs by assessing networks based on its topological properties. The VPs and VPPs are identified based on eleven different 
+	topological properties calculated for networks as constructed by deleting all nodes/proteins using one node and two nodes 
+	approaches, respectively, from the original network under investigation. Further, it helps to identify influential proteins in a 
+	given network based on the escape velocity centrality (EVC) and extended EVC (EVC+). This package provides the capabilities to use 
+	multiple cores on Linux/macOS to parallelize the process using parallel package. It also helps to identify hubs and bottlenecks 
+	present in the network based on the well-known pareto-principle of 80:20 rule.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
+URL: https://github.com/kr-swapnil/NetVA
+BugReports: https://github.com/kr-swapnil/NetVA/issues
 LazyLoad: yes
 Packaged: 2022-01-27 14:45:21 IST
 NeedsCompilation: no
 Repository: GitHub, CRAN
 Date/Publication: 2022-01-29 00:34:42
-LazyData: true

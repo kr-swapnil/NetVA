@@ -14,8 +14,9 @@ v and x should be equal. Note: v and x should be in the same order i.e. position
 topological property for that node in x should be the same.}
 
 \item{p}{Case sensitive. Keyword for topological property based on which users want to identify VNs. Keyword should be one from the
-following keywords: ANC (Average node connectivity), ND (Network density), NC (Network centralization), APL (Average path length), BET
-(Betweenness), AP (Articulation point), NDR (Network diameter), CC (Clustering coefficient), and HET (Heterogeneity).}
+following keywords: ACC (Average closeness), ANC (Average node connectivity), ND (Network density), NC (Network centralization), APL
+(Average path length), ABC (Average betweenness), AP (Articulation point), NDR (Network diameter), CC (Clustering coefficient), GE
+(Global efficiency), and HET (Heterogeneity).}
 }
 \value{
 A character vector containing all possible VNs.
@@ -26,6 +27,6 @@ It takes first input a numeric vector of topological values for all nodes; where
 second a keyword for topological property based on which users want to identify VNs.
 Different keywords for nine topological properties implemented in NetVA current version
 are as follows: ANC (Average node connectivity), ND (Network density), NC (Network
-centralization), APL (Average path length), BET (Betweenness), AP (Articulation
-point), NDR (Network diameter), CC (Clustering coefficient), and HET (Heterogeneity).
+centralization), APL (Average path length), ABC (Average betweenness), ACC (Average closeness), AP (Articulation
+point), NDR (Network diameter), CC (Clustering coefficient), GE (Global efficiency), and HET (Heterogeneity).
 }
