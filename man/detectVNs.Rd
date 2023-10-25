@@ -4,29 +4,31 @@
 \alias{detectVNs}
 \title{Detects vulnerable nodes (VNs) based on five-point summary of boxplot}
 \usage{
-detectVNs(v, x, p)
+detectVNs(v, t, p)
 }
 \arguments{
 \item{v}{Character vector containing names for all nodes of the given network.}
 
-\item{x}{Numeric vector containing values of one topological property for all nodes of the given network. Where, the length of
-v and x should be equal. Note: v and x should be in the same order i.e. position of one particular node in v and position of value of
-topological property for that node in x should be the same.}
+\item{t}{Numeric vector containing values of one topological property for all nodes of the given network. Where, the length of
+v and t should be equal. Note: v and t should be in the same order i.e. position of one particular node in v and position of value of
+topological property for that node in t should be the same.}
 
 \item{p}{Case sensitive. Keyword for topological property based on which users want to identify VNs. Keyword should be one from the
-following keywords: ACC (Average closeness), ANC (Average node connectivity), ND (Network density), NC (Network centralization), APL
-(Average path length), ABC (Average betweenness), AP (Articulation point), NDR (Network diameter), CC (Clustering coefficient), GE
-(Global efficiency), and HET (Heterogeneity).}
+following keywords: ACC (Average closeness), ANC (Average node connectivity), NDE (Network density), NCE (Network centralization), APL
+(Average path length), ABC (Average betweenness), APN (Articulation point), NDI (Network diameter), CCO (Clustering coefficient), GEF
+(Global efficiency), COH (Cohesiveness), COM (Compactness), AEC (Average eccentricity), and HET (Heterogeneity).}
 }
 \value{
 A character vector containing all possible VNs.
 }
 \description{
 This function detects vulnerable nodes (VNs) based on five-point summary of boxplot.
-It takes first input a numeric vector of topological values for all nodes; whereas,
-second a keyword for topological property based on which users want to identify VNs.
-Different keywords for nine topological properties implemented in NetVA current version
-are as follows: ANC (Average node connectivity), ND (Network density), NC (Network
-centralization), APL (Average path length), ABC (Average betweenness), ACC (Average closeness), AP (Articulation
-point), NDR (Network diameter), CC (Clustering coefficient), GE (Global efficiency), and HET (Heterogeneity).
+It takes first input a numeric vector of topological values for all nodes; whereas, second input is a keyword for topological property
+based on which users want to identify VNs.
+}
+\details{
+Different keywords for fourteen topological properties implemented in NetVA current version are as follows:
+ANC (Average node connectivity), NDE (Network density), NCE (Network centralization), APL (Average path length), ABC (Average
+betweenness), ACC (Average closeness), APN (Articulation point), NDI (Network diameter), CCO (Clustering coefficient), GEF (Global
+efficiency), COH (Cohesiveness), COM (Compactness), AEC (Average eccentricity), and HET (Heterogeneity).
 }

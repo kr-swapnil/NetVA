@@ -7,20 +7,20 @@
 netva(vl, net, ncore = 1)
 }
 \arguments{
-\item{vl}{A character vector of node or protein names or list of vectors having two nodes (node pairs/edges) or more than two nodes. If
-input is vector, only one node will be deleted at once. However, if the input is list, n nodes will be deleted at once, where n is the
-length of each element of the list.}
+\item{vl}{A character vector of node or protein names or list of vectors having two nodes (node pairs/edges) or more than two nodes.
+If input is vector, only one node will be deleted at once. However, if the input is list, n nodes will be deleted at once, where n is #' the length of each element of the list.}
 
 \item{net}{An igraph graph object.}
 
 \item{ncore}{Number of cores users want to use for the computation.}
 }
 \value{
-A dataframe having number of rows equal to length(vl) with nine columns.
+A dataframe having number of rows equal to length(vl) with fourteen columns.
 }
 \description{
-This function performs deletion of nodes one by one and calculation of average node connectivity, average path length, articulation
-point, network centralization, network density, network diameter, transitivity (clustering coefficient), betweenness, and heterogeneity
-of resultant networks using multiple cores on Linux/macOS based machines. For Windows based machine the parallel computing feature is
-not available and hence, it works in normal mode only despite providing ncore value more than one and may take more computing time.
+This function performs deletion of nodes one by one and calculation of average betweenness, average closeness, average eccentricity,
+average node connectivity, average path length, articulation point, clustering coefficient (transitivity), cohesiveness, compactness,
+globalefficiency, heterogeneity, network centralization, network density, and network diameter of resultant networks using multiple
+cores on Linux/macOS based machines. For Windows based machine the parallel computing feature is not available and hence, it works in
+normal mode only despite providing ncore value more than one and may take more computing time.
 }

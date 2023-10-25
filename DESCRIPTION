@@ -7,9 +7,10 @@ Author: Swapnil Kumar, Grace Pauline, Vaibhav Vindal
 Maintainer: Swapnil Kumar <swapnil.kr@yahoo.com>
 Depends: R (>= 3.0.0), igraph
 Imports: parallel
+Suggests: knitr, rmarkdown
 Description: Performs network vulnerability analysis and help to identify vulnerable or critical proteins (VPs) and protein pairs (VPPs) 
 	for a given protein-protein interaction (PPI) network. Hence, network vulnerability analysis is an approach to identify VPs and 
-	VPPs by assessing networks based on its topological properties. The VPs and VPPs are identified based on eleven different 
+	VPPs by assessing networks based on its topological properties. The VPs and VPPs are identified based on fourteen different 
 	topological properties calculated for networks as constructed by deleting all nodes/proteins using one node and two nodes 
 	approaches, respectively, from the original network under investigation. Further, it helps to identify influential proteins in a 
 	given network based on the escape velocity centrality (EVC) and extended EVC (EVC+). This package provides the capabilities to use 
@@ -19,6 +20,7 @@ License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+VignetteBuilder: knitr
 URL: https://github.com/kr-swapnil/NetVA
 BugReports: https://github.com/kr-swapnil/NetVA/issues
 LazyLoad: yes
