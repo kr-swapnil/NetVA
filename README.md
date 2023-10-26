@@ -3,11 +3,11 @@
 
 <b>General information</b>:
 
-Version: 1.0
+Version: 1.0.0
 
 Date: 2022-02-04
 
-Depends: R (>= 2.6.0), igraph
+Depends: R (>= 3.0.0), igraph
 
 Imports: parallel
 
@@ -23,12 +23,16 @@ Imports: parallel
   
   detectVNs(): Detects VPs based on the five-point summary of boxplot for each topological properties included in the package.
   
+  evc(): Calculates EVC and EVC+ values of each nodes present in a given network.
+  
+  detectINs(): Detects influential nodes i.e. proteins based on the values of EVC and EVC+ for a given network.
+  
   detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule.
   
   detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule.
 	
   heterogeneity(): Calculates the value of heterogeneity for a given network.
   
-  evc(): Calculates EVC and EVC+ values of each nodes present in a given network.
-  
-  detectINs(): Detects influential nodes i.e. proteins based on the values of EVC and EVC+ for a given network.
+  cohesiveness(): Calculates the cohesiveness of a given network as it is or after the removal of a node of interest.
+
+  compactness(): Calculates the cohesiveness of a given network as it is or after the removal of a node of interest.
