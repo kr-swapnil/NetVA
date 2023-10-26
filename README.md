@@ -11,7 +11,7 @@ Depends: R (>= 3.0.0), igraph
 
 Imports: parallel
 
-<b>Description</b>: The NetVA assists in network analysis with two approaches: (1) Performs network vulnerability analysis and help to identify vulnerable nodes (VNs) or proteins (VPs) for a given protein-protein interaction (PPI) network. Hence, network vulnerability analysis is an approach to identify VPs by assessing networks based on its topological properties. The VPs are identified based on nine different topological properties calculated for networks as constructed by deleting all nodes/proteins, one by one, from the original network under investigation. This package provides the capabilities to use multiple cores on Linux/macOS to parallelize the process using parallel package. (2) Performs network influence analysis to identify influential nodes (INs) i.e. key nodes with ranking by calculating escape velocity centrality (EVC) and extended escape velocity centrality (EVC+). It also helps to identify hubs and bottlenecks present in the given network based on the well-known pareto-principle of 80:20 rule. An illustrative tutorial on how to use various functions of this package for network vulnerability and influence analysis has been provided in <b>Tutorial_Rscript</b>.
+<b>Description</b>: The NetVA assists in network analysis with two approaches: (1) Performs network vulnerability analysis and help to identify vulnerable nodes (VNs) or proteins (VPs) for a given protein-protein interaction (PPI) network. Hence, network vulnerability analysis is an approach to identify VPs by assessing networks based on its topological properties. The VPs are identified based on fourteen different topological properties calculated for networks as constructed by deleting all nodes/proteins, one by one, from the original network under investigation. This package provides the capabilities to use multiple cores on Linux/macOS to parallelize the process using parallel package. (2) Performs network influence analysis to identify influential nodes (INs) i.e. key nodes with ranking by calculating escape velocity centrality (EVC) and extended escape velocity centrality (EVC+). It also helps to identify hubs and bottlenecks present in the given network based on the well-known pareto-principle of 80:20 rule. An illustrative tutorial on how to use various functions of this package for network vulnerability and influence analysis has been provided in <b>Tutorial_Rscript</b>.
 
 <b>Installation</b>: The NetVA package can be installed on R console using:
 
@@ -36,3 +36,11 @@ Imports: parallel
   cohesiveness(): Calculates the cohesiveness of a given network as it is or after the removal of a node of interest.
 
   compactness(): Calculates the compactness of a given network as it is or after the removal of a node of interest.
+
+<b>Issues/Bug reports</b> 
+Report any issues or bugs to https://github.com/kr-swapnil/NetVA/issues.
+
+<b>How to cite</b>
+
+If you find NetVA useful, please cite the following publication:
+<i>Kumar S, Pauline G, Vindal V (2023). NetVA: an R package for network vulnerability and influence analysis. bioRxiv, doi: https://doi.org/10.1101/2023.07.31.551200.</i>
