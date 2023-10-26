@@ -27,12 +27,12 @@ Imports: parallel
   
   detectINs(): Detects influential nodes i.e. proteins based on the values of EVC and EVC+ for a given network.
   
-  detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule.
+  detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified hubs against PPI data noise using rewiring of a given percentage of edges in the network.
   
-  detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule.
+  detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified hubs against PPI data noise using rewiring of a given percentage of edges in the network.
 	
   heterogeneity(): Calculates the value of heterogeneity for a given network.
   
   cohesiveness(): Calculates the cohesiveness of a given network as it is or after the removal of a node of interest.
 
-  compactness(): Calculates the cohesiveness of a given network as it is or after the removal of a node of interest.
+  compactness(): Calculates the compactness of a given network as it is or after the removal of a node of interest.
