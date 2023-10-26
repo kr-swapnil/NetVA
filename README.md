@@ -27,9 +27,9 @@ Imports: parallel
   
   detectINs(): Detects influential nodes i.e. proteins based on the values of EVC and EVC+ for a given network.
   
-  detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified hubs against PPI data noise using rewiring of a given percentage of edges in the network.
+  detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified hubs against PPI data noise using rewiring of a given percentage of edges as per the user's choice in the network.
   
-  detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified hubs against PPI data noise using rewiring of a given percentage of edges in the network.
+  detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified bottlenecks against PPI data noise using rewiring of a given percentage of edges as per the user's choice in the network.
 	
   heterogeneity(): Calculates the value of heterogeneity for a given network.
   
