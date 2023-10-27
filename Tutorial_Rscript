@@ -3,7 +3,7 @@
 install.packages("igraph")
 
 ##For installing the NetVA from GitHub, the users will need devtools package. If the users have devtools 
-##installed already in their systems, then directly can proceed for the installation of the NetVA.
+##installed already in their systems, then directly can proceed with the installation of the NetVA.
 ##If devtools is not installed, then the users will have to install it first before installing the NetVA.
 install.packages("devtools")
 devtools::install_github("kr-swapnil/NetVA")
@@ -19,8 +19,8 @@ devtools::install_github("kr-swapnil/NetVA")
 #Store name of all vertices in v as character vector
 > v <- vertex_attr(bc.net)$name
 
-#Run netva using single core/default option for one protein or more than one proteins at once
-#compatible for all Linux, macOS and Windows machines
+#Run netva using single core/default option for one protein or more than one protein at once
+#compatible for all Linux, macOS, and Windows machines
 > netva.res <- netva(v[1], bc.net)  #Only 1st protein
 > netva.res <- netva(v[2], bc.net)  #Only 2nd protein
 > netva.res <- netva(v[6], bc.net)  #Only 6th protein
@@ -30,40 +30,65 @@ devtools::install_github("kr-swapnil/NetVA")
 #Run netva using multiple core option for all proteins one by one (compatible only for all Linux and macOS machines)
 > netva.res <- netva(v, bc.net, ncore = 36)
 
-#Run netva using single core/default option for all proteins one by one (compatible for all Linux, macOS and Windows machines)
+#Run netva using single core/default option for all proteins one by one (compatible with all Linux, macOS, and Windows machines)
 > netva.res <- netva(v, bc.net)
 
-#Detect vulnerable proteins based on each property one by one
-> anc.outliers <- detectVPs(v, netva.res[,1], "ANC") #Average node connectivity
-> nd.outliers <- detectVPs(v, netva.res[,2], "ND") #Network density
-> nc.outliers <- detectVPs(v, netva.res[,3], "NC") #Network centralization
-> apl.outliers <- detectVPs(v, netva.res[,4], "APL") #Average path length
-> bet.outliers <- detectVPs(v, netva.res[,5], "BET") #Betweenness centrality
-> ap.outliers <- detectVPs(v, netva.res[,6], "AP") #Articulation point
-> ndr.outliers <- detectVPs(v, netva.res[,7], "NDR") #Network diameter
-> cc.outliers <- detectVPs(v, netva.res[,8], "CC") #Clustering coefficient
-> het.outliers <- detectVPs(v, netva.res[,9], "HET") #Heterogeneity
+#Detect vulnerable proteins (VPs) based on each property one by one
+> abc.outliers <- detectVNs(v, netva.res[,1], "ABC") #Average betweenness centrality
+> acc.outliers <- detectVNs(v, netva.res[,2], "ACC") #Average closeness centrality
+> aec.outliers <- detectVNs(v, netva.res[,3], "AEC") #Average eccentricity
+> anc.outliers <- detectVNs(v, netva.res[,4], "ANC") #Average node connectivity
+> apl.outliers <- detectVNs(v, netva.res[,5], "APL") #Average path length
+> apn.outliers <- detectVNs(v, netva.res[,6], "APN") #Articulation point
+> cco.outliers <- detectVNs(v, netva.res[,7], "CCO") #Clustering coefficient
+> coh.outliers <- detectVNs(v, netva.res[,8], "COH") #Cohesiveness
+> com.outliers <- detectVNs(v, netva.res[,9], "COM") #Compactness
+> gef.outliers <- detectVNs(v, netva.res[,10], "GEF") #Global efficiency
+> het.outliers <- detectVNs(v, netva.res[,11], "HET") #Heterogeneity
+> nce.outliers <- detectVNs(v, netva.res[,12], "NCE") #Network centralization
+> nde.outliers <- detectVNs(v, netva.res[,13], "NDE") #Network density
+> ndi.outliers <- detectVNs(v, netva.res[,14], "NDI") #Network diameter
 
-#Vulnerability analysis for the detection of most vulnerable edges i.e. node pairs
+#Vulnerability analysis for the detection of most vulnerable edges i.e. node pairs (VPPs)
 > v.list = combn(v, 2, simplify = FALSE)
 > netva.res <- netva(v.list, bc.net, ncore = 36)
 
-> anc.outliers <- detectVPs(v, netva.res[,1], "ANC") #Average node connectivity
-> nd.outliers <- detectVPs(v, netva.res[,2], "ND") #Network density
-> nc.outliers <- detectVPs(v, netva.res[,3], "NC") #Network centralization
-> apl.outliers <- detectVPs(v, netva.res[,4], "APL") #Average path length
-> bet.outliers <- detectVPs(v, netva.res[,5], "BET") #Betweenness centrality
-> ap.outliers <- detectVPs(v, netva.res[,6], "AP") #Articulation point
-> ndr.outliers <- detectVPs(v, netva.res[,7], "NDR") #Network diameter
-> cc.outliers <- detectVPs(v, netva.res[,8], "CC") #Clustering coefficient
-> het.outliers <- detectVPs(v, netva.res[,9], "HET") #Heterogeneity
+> abc.outliers <- detectVNs(v, netva.res[,1], "ABC") #Average betweenness centrality
+> acc.outliers <- detectVNs(v, netva.res[,2], "ACC") #Average closeness centrality
+> aec.outliers <- detectVNs(v, netva.res[,3], "AEC") #Average eccentricity
+> anc.outliers <- detectVNs(v, netva.res[,4], "ANC") #Average node connectivity
+> apl.outliers <- detectVNs(v, netva.res[,5], "APL") #Average path length
+> apn.outliers <- detectVNs(v, netva.res[,6], "APN") #Articulation point
+> cco.outliers <- detectVNs(v, netva.res[,7], "CCO") #Clustering coefficient
+> coh.outliers <- detectVNs(v, netva.res[,8], "COH") #Cohesiveness
+> com.outliers <- detectVNs(v, netva.res[,9], "COM") #Compactness
+> gef.outliers <- detectVNs(v, netva.res[,10], "GEF") #Global efficiency
+> het.outliers <- detectVNs(v, netva.res[,11], "HET") #Heterogeneity
+> nce.outliers <- detectVNs(v, netva.res[,12], "NCE") #Network centralization
+> nde.outliers <- detectVNs(v, netva.res[,13], "NDE") #Network density
+> ndi.outliers <- detectVNs(v, netva.res[,14], "NDI") #Network diameter
 
 #Detect hubs and bottlenecks
 > hubs <- detectHubs(bc.net)
 > bottlenecks <- detectBottlenecks(bc.net)
 
-#Detect influential proteins
-> detectINs(bc.net)
+#EVC and EVC+ of all nodes in bc.net
+> evc.bcnet <- evc(bc.net)
 
-#Calculate value of heterogeneity of a network
+#Detect influential proteins
+> detectINs(bc.net) 
+
+#Calculate the value of heterogeneity of a network
 > net.het <- heterogeneity(bc.net)
+
+#Calculate the value of cohesiveness of a network
+> coh.cent <- cohesiveness(net = bc.net)
+
+#Calculate the value of cohesiveness of the network after the removal of node "UBC"
+> coh.cent <- cohesiveness(v = "UBC", net = bc.net)
+
+#Calculate the value of compactness of a network
+> com.cent <- compactness(net = bc.net)
+
+#Calculate the value of compactness of the network after the removal of node "UBC"
+> com.cent <- compactness(v = "UBC", net = bc.net)
