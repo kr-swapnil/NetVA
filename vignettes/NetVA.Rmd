@@ -9,11 +9,11 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
-`NetVA` is a fast and open source library/package for the analysis of networks. The package consists of a core written in [R](https://github.com/kr-swapnil/NetVA). This vignette aims to give you an overview of the functions available in the `NetVA` package.
+## Introduction
+`NetVA` is a fast and open-source library/package for the analysis of networks. The package consists of a core written in [R](https://github.com/kr-swapnil/NetVA). This vignette aims to give you an overview of the functions available in the `NetVA` package.
 
 ***
-**NOTE:** Throughout this tutorial, we will use words `graph` and `network` as synonyms, and also `vertex`, `node` or 'protein' as synonyms.
+**NOTE:** Throughout this tutorial, we will use the words `graph` and `network` as synonyms, and also `vertex,` `node` or 'protein' as synonyms.
 
 ***
 
@@ -21,12 +21,12 @@ vignette: >
 To install the package from GitHub, use either:
 ```{r echo = TRUE, eval = FALSE}
 install.packages("remotes")
-remotes::install_github("kr-swapnil/NetVA")
+remotes::install_github("kr-swapnil/NetVA", build_vignettes = TRUE)
 ```
 or
 ```{r echo = TRUE, eval = FALSE}
 install.packages("devtools")
-devtools::install_github("kr-swapnil/NetVA")
+devtools::install_github("kr-swapnil/NetVA", build_vignettes = TRUE)
 ```
 
 More details on dependencies, requirements, and troubleshooting on installation are found on the main [documentation page](https://github.com/kr-swapnil/NetVA).
