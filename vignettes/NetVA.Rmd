@@ -10,6 +10,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+## Introduction
 `NetVA` is a fast and open source library/package for the analysis of networks. The package consists of a core written in [R](https://github.com/kr-swapnil/NetVA). This vignette aims to give you an overview of the functions available in the `NetVA` package.
 
 ***
@@ -174,7 +175,33 @@ Three letter keywords for corresponding topological properties include the follo
 ```
 
 ## Hubs and bottlenecks in a network
-`NetVA` offers `detectHubs` and `detectBottlenecks` function to identify Hubs for a given network, e.g., a protein-protein interaction network:
+`NetVA` offers `detectHubs` and `detectBottlenecks` function to identify hubs and bottlenecks respectively for a given network, e.g., a protein-protein interaction network.
+ Identify all possible hubs and bottlenecks based on the pareto principle of Eighty-twenty rule (by default) for a given network.
+
+Usage: 
+     detectHubs(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
+     detectBottlenecks(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
+
+Arguments:
+     net: An igraph graph object.
+  method: Method to identify hub nodes. Currently this function
+          supports only the method of Eighty-twenty principle (ETP).
+       p: Value of percent of nodes/proteins to be considered for the
+          determination of degree cutoff. By default value is 20%. It
+          is an optional parameter.
+validate: Logical, TRUE or FALSE, whether to validate identified hubs
+          by rewiring of a given percentage of edges.
+ perturb: Percentage value to rewire edges.
+    iter: Number of iterations to perform rewiring and construction of
+          new rewired networks. The default value is
+          round(100/perturb).
+      ng: Number of new graphs/networks to be constructed. The default
+          value is the value of iter.
+          
+Value:
+     For detectHubs(): A numeric vector containing all possible hubs with hub proteins' names and corresponding degree values as identified in the given network.
+     For detectBottlenecks(): A numeric vector containing all possible bottlenecks with bottleneck proteins' names and corresponding betweenness values as identified in the given network.
+          
 ```{r}
 #hubs <- detectHubs(net = bc.net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
 
