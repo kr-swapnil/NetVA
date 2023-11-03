@@ -23,6 +23,11 @@ Vignette: Available
 <b>2.</b> Installation with the vignette
 > devtools::install_github("kr-swapnil/NetVA", build_vignettes = TRUE)
 
+<b>How to access/browse vignettes</b>: 
+> vignette("NetVA")
+#or
+> browseVignettes("NetVA")
+
 <b>Available functions</b>:
 	
   netva(): Performs vulnerability analysis with or without parallel processing. Parallel processing works only on Linux/macOS machines but not on Windows-based machines.
