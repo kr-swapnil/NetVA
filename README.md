@@ -25,6 +25,7 @@ Vignette: Available
 
 <b>How to access/browse vignettes</b>: 
 > vignette("NetVA")
+
 <b>or</b>
 > browseVignettes("NetVA")
 
