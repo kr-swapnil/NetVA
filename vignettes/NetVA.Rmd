@@ -56,92 +56,124 @@ Now you have all `NetVA` functions available.
 `NetVA` offers `netva` function to perform vulnerability analysis of any given network, e.g., a protein-protein interaction network:
 
 ```{r}
-#Load protein-protein interactions of breast cancer available within this package as igraph object:
+# Load protein-protein interactions of breast cancer available within this package as igraph object:
+
 data(bca_ppi)
 bc.net <- bca_ppi
 
-#Read graph/network from TXT and CSV files:
-#From TXT file, it should not have header/column names
-#bc.net <- read.graph("BRCA_100ppi.txt", format = "ncol")
+# Read graph/network from TXT and CSV files:
+# From TXT file, it should not have header/column names
+# bc.net <- read.graph("BRCA_100ppi.txt", format = "ncol")
 
-#Convert a data.frame to a graph object:
-#From TXT/CSV file, if TXT/CSV file has header/column names, then head = TRUE
-#bc.net <- read.table("BRCA_100ppi.txt", head = FALSE) #TXT to data.frame
-#bc.net <- read.csv("BRCA_100ppi.csv", head = FALSE) #CSV to data.frame
+# Convert a data.frame to a graph object:
+# From TXT/CSV file, if TXT/CSV file has header/column names, then head = TRUE
+# bc.net <- read.table("BRCA_100ppi.txt", head = FALSE) #TXT to data.frame
+# bc.net <- read.csv("BRCA_100ppi.csv", head = FALSE) #CSV to data.frame
 
-#bc.net <- graph.data.frame(bc.net, directed = FALSE) #data.frame to graph object
+# bc.net <- graph.data.frame(bc.net, directed = FALSE) #data.frame to graph object
 
-#Store name of all vertices in vl as character vector
+# Store name of all vertices in vl as character vector
+
 vl <- vertex_attr(bc.net)$name
 
-#Run netva using single core/default option for one protein or more than one protein at once
-##Compatible with all Linux, macOS, and Windows machines
-## Syntax: netva(vl, net, ncore = 1), where vl is the vector or list of nodes, node pairs, or node triplets, net is the network from which nodes will be deleted, and ncore is the number of cores for parallel processing by forking the job in multiple parts.
+# Run netva using single core/default option for one protein or more than one protein at once
+## Compatible with all Linux, macOS, and Windows machines
+# Usage: 
+#      netva(vl, net, ncore = 1)
+#
+# Arguments:
+#        vl: A character vector or list of protein, protein pair, or protein triplet. If input is vector, and each element of vector is one protein name, only one node will be deleted at once. However, if the input is list, n nodes will be deleted at once, where n is the length of each element of the list.
+#
+#       net: An igraph graph object.
+#
+#     ncore: Number of cores users want to use for the computation.
 
+# Value:
+#     A dataframe having number of rows equal to length(vl) with fourteen columns.
+
+# Example:
 netva.res <- netva(vl[c(1, 6)], bc.net) #Two proteins, i.e., 1st and 6th at once
 netva.res <- netva(vl[c(1, 3, 7)], bc.net) #Three proteins, i.e., 1st, 3rd, and 7th at once
 
-#Run netva using single core/default option for all proteins one by one individually (compatible with all Linux, macOS, and Windows machines)
-#netva.res <- netva(vl, bc.net)
+# Run netva using single core/default option for all proteins one by one individually (compatible with all Linux, macOS, and Windows machines)
+# netva.res <- netva(vl, bc.net)
 
-#Run netva using multiple core option for all proteins one by one individually (compatible only with all Linux and macOS machines)
-#netva.res <- netva(vl, bc.net, ncore = 30)
+# Run netva using multiple core option for all proteins one by one individually (compatible only with all Linux and macOS machines)
+# netva.res <- netva(vl, bc.net, ncore = 30)
 
-#Detect vulnerable proteins (VPs) based on each property one by one
-## Syntax: detect(v, t, p), where v is the vector of node/protein names, t is the vector of topological property values for all nodes with same length and order of values as of v, and p is the three letter keyword for corresponding topological property.
+# Detect vulnerable proteins (VPs) based on each property one by one
+# Usage:
+#      detectVNs(v, t, p)
 
-#abc.outliers <- detectVNs(vl, netva.res[,1], "ABC") #Average betweenness
-#acc.outliers <- detectVNs(vl, netva.res[,2], "ACC") #Average closeness
-#aec.outliers <- detectVNs(vl, netva.res[,3], "AEC") #Average eccentricity
-#anc.outliers <- detectVNs(vl, netva.res[,4], "ANC") #Average node connectivity
-#apl.outliers <- detectVNs(vl, netva.res[,5], "APL") #Average path length
-#apn.outliers <- detectVNs(vl, netva.res[,6], "APN") #Articulation point
-#cco.outliers <- detectVNs(vl, netva.res[,7], "CCO") #Clustering coefficient
-#coh.outliers <- detectVNs(vl, netva.res[,8], "COH") #Cohesiveness
-#com.outliers <- detectVNs(vl, netva.res[,9], "COM") #Compactness
-#gef.outliers <- detectVNs(vl, netva.res[,10], "GEF") #Global efficiency
-#het.outliers <- detectVNs(vl, netva.res[,11], "HET") #Heterogeneity
-#nce.outliers <- detectVNs(vl, netva.res[,12], "NCE") #Network centralization
-#nde.outliers <- detectVNs(vl, netva.res[,13], "NDE") #Network density
-#ndi.outliers <- detectVNs(vl, netva.res[,14], "NDI") #Network diameter
+# Arguments:
+#       v: Character vector containing names for all nodes of the given network.
 
-#Vulnerability analysis for the detection of vulnerable node/protein pairs (VPPs)
-##(1) For random pairs of nodes which may or may not be connected with each other in the network
+#       t: Numeric vector containing values of one topological property for all nodes of the given network. Where, the length of v and t should be equal. Note: v and t should be in the same order i.e. position of one particular node in v and position of value of topological property for that node in t should be the same.
+
+#       p: Case sensitive. Keyword for topological property based on which users want to identify VNs. Keyword should be one from the following keywords: ACC (Average closeness), ANC (Average node connectivity), NDE (Network density), NCE (Network centralization), APL (Average path length), ABC (Average betweenness), APN (Articulation point), NDI (Network diameter), CCO (Clustering coefficient), GEF (Global efficiency), COH (Cohesiveness), COM (Compactness), AEC (Average eccentricity), and HET (Heterogeneity).
+
+# Value:
+#     A character vector containing all possible VNs.
+
+# Example:
+# abc.outliers <- detectVNs(vl, netva.res[,1], "ABC") #Average betweenness
+# acc.outliers <- detectVNs(vl, netva.res[,2], "ACC") #Average closeness
+# aec.outliers <- detectVNs(vl, netva.res[,3], "AEC") #Average eccentricity
+# anc.outliers <- detectVNs(vl, netva.res[,4], "ANC") #Average node connectivity
+# apl.outliers <- detectVNs(vl, netva.res[,5], "APL") #Average path length
+# apn.outliers <- detectVNs(vl, netva.res[,6], "APN") #Articulation point
+# cco.outliers <- detectVNs(vl, netva.res[,7], "CCO") #Clustering coefficient
+# coh.outliers <- detectVNs(vl, netva.res[,8], "COH") #Cohesiveness
+# com.outliers <- detectVNs(vl, netva.res[,9], "COM") #Compactness
+# gef.outliers <- detectVNs(vl, netva.res[,10], "GEF") #Global efficiency
+# het.outliers <- detectVNs(vl, netva.res[,11], "HET") #Heterogeneity
+# nce.outliers <- detectVNs(vl, netva.res[,12], "NCE") #Network centralization
+# nde.outliers <- detectVNs(vl, netva.res[,13], "NDE") #Network density
+# ndi.outliers <- detectVNs(vl, netva.res[,14], "NDI") #Network diameter
+
+# Vulnerability analysis for the detection of vulnerable node/protein pairs (VPPs)
+## (1) For random pairs of nodes which may or may not be connected with each other in the network
+
 np.list = combn(vl[1:100], 2, simplify = FALSE)
 length(np.list)
-#netva.res <- netva(np.list, bc.net, ncore = 30)
 
-##(2) For those pairs of nodes that are connected with each other in the network
-###Detection of connected pairs of nodes in the network (only for hundred nodes)
+# netva.res <- netva(np.list, bc.net, ncore = 30)
+
+## (2) For those pairs of nodes that are connected with each other in the network
+### Detection of connected pairs of nodes in the network (only for hundred nodes)
+
 vl2 = t(combn(vl[1:100], 2))
 dim(vl2)
 np.list = list()
 l = 0
-#for(i in 1:dim(vl2)[1]){
-#	k = are_adjacent(bc.net, vl2[i,1], vl2[i,2])
-#	if(k == TRUE){
-#		l = l + 1
-#		np.list[[l]] = as.character(vl2[i,])
-#	}
-#}
-length(np.list)
-#netva.res <- netva(np.list, bc.net, ncore = 30)
 
-#Detect vulnerable protein pairs (VPPs) based on each property one by one
-#abc.outliers <- detectVNs(rownames(netva.res), netva.res[,1], "ABC") #Average betweenness
-#acc.outliers <- detectVNs(rownames(netva.res), netva.res[,2], "ACC") #Average closeness
-#aec.outliers <- detectVNs(rownames(netva.res), netva.res[,3], "AEC") #Average eccentricity
-#anc.outliers <- detectVNs(rownames(netva.res), netva.res[,4], "ANC") #Average node connectivity
-#apl.outliers <- detectVNs(rownames(netva.res), netva.res[,5], "APL") #Average path length
-#apn.outliers <- detectVNs(rownames(netva.res), netva.res[,6], "APN") #Articulation point
-#nce.outliers <- detectVNs(rownames(netva.res), netva.res[,7], "NCE") #Network centralization
-#cco.outliers <- detectVNs(rownames(netva.res), netva.res[,8], "CCO") #Clustering coefficient
-#coh.outliers <- detectVNs(rownames(netva.res), netva.res[,9], "COH") #Cohesiveness
-#com.outliers <- detectVNs(rownames(netva.res), netva.res[,10], "COM") #Compactness
-#gef.outliers <- detectVNs(rownames(netva.res), netva.res[,11], "GEF") #Global efficiency
-#het.outliers <- detectVNs(rownames(netva.res), netva.res[,12], "HET") #Heterogeneity
-#nde.outliers <- detectVNs(rownames(netva.res), netva.res[,13], "NDE") #Network density
-#ndi.outliers <- detectVNs(rownames(netva.res), netva.res[,14], "NDI") #Network diameter
+# for(i in 1:dim(vl2)[1]){
+#	 k = are_adjacent(bc.net, vl2[i,1], vl2[i,2])
+#	 if(k == TRUE){
+#	 	l = l + 1
+#	 	np.list[[l]] = as.character(vl2[i,])
+#	 }
+# }
+
+length(np.list)
+
+# netva.res <- netva(np.list, bc.net, ncore = 30)
+
+# Detect vulnerable protein pairs (VPPs) based on each property one by one
+# abc.outliers <- detectVNs(rownames(netva.res), netva.res[,1], "ABC") #Average betweenness
+# acc.outliers <- detectVNs(rownames(netva.res), netva.res[,2], "ACC") #Average closeness
+# aec.outliers <- detectVNs(rownames(netva.res), netva.res[,3], "AEC") #Average eccentricity
+# anc.outliers <- detectVNs(rownames(netva.res), netva.res[,4], "ANC") #Average node connectivity
+# apl.outliers <- detectVNs(rownames(netva.res), netva.res[,5], "APL") #Average path length
+# apn.outliers <- detectVNs(rownames(netva.res), netva.res[,6], "APN") #Articulation point
+# nce.outliers <- detectVNs(rownames(netva.res), netva.res[,7], "NCE") #Network centralization
+# cco.outliers <- detectVNs(rownames(netva.res), netva.res[,8], "CCO") #Clustering coefficient
+# coh.outliers <- detectVNs(rownames(netva.res), netva.res[,9], "COH") #Cohesiveness
+# com.outliers <- detectVNs(rownames(netva.res), netva.res[,10], "COM") #Compactness
+# gef.outliers <- detectVNs(rownames(netva.res), netva.res[,11], "GEF") #Global efficiency
+# het.outliers <- detectVNs(rownames(netva.res), netva.res[,12], "HET") #Heterogeneity
+# nde.outliers <- detectVNs(rownames(netva.res), netva.res[,13], "NDE") #Network density
+# ndi.outliers <- detectVNs(rownames(netva.res), netva.res[,14], "NDI") #Network diameter
 ```
 
 Three letter keywords for corresponding topological properties include the following:
@@ -166,51 +198,83 @@ Three letter keywords for corresponding topological properties include the follo
 
 ## Network influence analysis
 `NetVA` offers `evc` and `detectINs` functionality to perform influence analysis of any given network, e.g., a protein-protein interaction network:
-```{r}
-#Calculate the values of EVC and EVC+ for all nodes present in the network:
-#evc.res = evc(bc.net)
 
-#Detect influential proteins (IPs) based on EVC and EVC+:
-#ip.list = detectINs(bc.net)
+```{r}
+# 1. Calculate only the values of EVC and EVC+ for all nodes present in the network
+# Usage:
+#      evc(g, alpha = 1, mode = "all")
+     
+# Arguments:
+#       g: An igraph graph object.
+
+#   alpha: A tunable factor with value between 0.1 to 1. The default value of alpha is 1.
+
+#    mode: The type of the core in a graph. Character constant with possible values - ‘in’: in-cores are computed, ‘out’: out-cores are computed, ‘all’: the corresponding undirected graph is considered. This argument is only for directed graphs.
+
+# Value:
+#     A list of two vectors: (1) evc, containing the values of EVC and (2) evc.plus, the values of EVC+ of each vertex in the network.
+
+# Example:
+# evc.res = evc(bc.net)
+
+# 2. Detect influential proteins (IPs) based on EVC and EVC+:
+# Usage:
+#     detectINs(net, p = 20)
+     
+# Arguments:
+#     net: An igraph graph object.
+
+#       p: Value of percent of nodes to be considered for the determination of EVC/EVC+ cutoff. By default value is 20%.
+
+# Value:
+#     A list containing two vectors: (1) ins.evc - all possible Influential nodes based on EVC, (2) ins.evcplus - all possible Influential nodes based on EVC+ as identified in the given network.
+
+# Example:
+# ip.list = detectINs(bc.net)
 ```
 
 ## Hubs and bottlenecks in a network
 `NetVA` offers `detectHubs` and `detectBottlenecks` function to identify hubs and bottlenecks respectively for a given network, e.g., a protein-protein interaction network.
- Identify all possible hubs and bottlenecks based on the pareto principle of Eighty-twenty rule (by default) for a given network.
 
-Usage: 
-     detectHubs(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
-     detectBottlenecks(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
-
-Arguments:
-     net: An igraph graph object.
-  method: Method to identify hub nodes. Currently this function
-          supports only the method of Eighty-twenty principle (ETP).
-       p: Value of percent of nodes/proteins to be considered for the
-          determination of degree cutoff. By default value is 20%. It
-          is an optional parameter.
-validate: Logical, TRUE or FALSE, whether to validate identified hubs
-          by rewiring of a given percentage of edges.
- perturb: Percentage value to rewire edges.
-    iter: Number of iterations to perform rewiring and construction of
-          new rewired networks. The default value is
-          round(100/perturb).
-      ng: Number of new graphs/networks to be constructed. The default
-          value is the value of iter.
-          
-Value:
-     For detectHubs(): A numeric vector containing all possible hubs with hub proteins' names and corresponding degree values as identified in the given network.
-     For detectBottlenecks(): A numeric vector containing all possible bottlenecks with bottleneck proteins' names and corresponding betweenness values as identified in the given network.
-          
 ```{r}
-#hubs <- detectHubs(net = bc.net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
+# Identify all possible hubs and bottlenecks based on the pareto principle of Eighty-twenty rule (by default) for a given network.
+
+# Usage: 
+#     detectHubs(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
+
+#     detectBottlenecks(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
+
+# Arguments:
+#     net: An igraph graph object.
+
+#  method: Method to identify hub nodes. Currently this function supports only the method of Eighty-twenty principle (ETP).
+
+#       p: Value of percent of nodes/proteins to be considered for the determination of degree cutoff. By default value is 20%. It is an optional parameter.
+
+# validate: Logical, TRUE or FALSE, whether to validate identified hubs by rewiring of a given percentage of edges.
+
+# perturb: Percentage value to rewire edges.
+
+#    iter: Number of iterations to perform rewiring and construction of new rewired networks. The default value is "round(100/perturb)".
+
+#      ng: Number of new graphs/networks to be constructed. The default value is the value of "iter".
+          
+# Value:
+#     For detectHubs(): A numeric vector containing all possible hubs with hub proteins' names and corresponding degree values as identified in the given network.
+
+#     For detectBottlenecks(): A numeric vector containing all possible bottlenecks with bottleneck proteins' names and corresponding betweenness values as identified in the given network.
+```
+
+```{r}
+# Example:
+# hubs <- detectHubs(net = bc.net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
 
 hubs <- detectHubs(net = bc.net)
 head(hubs)
 ```
 
 ```{r}
-#bots <- detectBottlenecks(net = bc.net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
+# bots <- detectBottlenecks(net = bc.net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter)
 
 bots <- detectBottlenecks(net = bc.net)
 head(bots)
@@ -218,27 +282,74 @@ head(bots)
 
 ## Heterogeneity of networks
 `NetVA` offers `netva` function to perform vulnerability analysis of any given network, e.g., a protein-protein interaction network:
+
 ```{r}
-#Calculate the value of heterogeneity of a network:
+# Calculate the value of heterogeneity for a given network:
+# Usage:
+#      heterogeneity(net)
+     
+# Arguments:
+#     net: An igraph graph object.
+
+# Value:
+#     A single numeric value.
+
+# Example:
 net.het <- heterogeneity(bc.net)
+net.het
 ```
 
 ## Cohesiveness and compactness of networks
 `NetVA` offers functionality to calculate Cohesiveness and Compactness of any given network, e.g., a protein-protein interaction network:
-```{r}
-#Cohesiveness of complete network:
-#coh.cent <- cohesiveness(net = bc.net)
 
-#Cohesiveness of a network after removal of a particular node, e.g., "UBC":
-#coh.cent <- cohesiveness(v = "UBC", net = bc.net)
+```{r}
+# Cohesiveness of network based on the total edge weight of all proteins present either in the complete network or in the network after the removal of a node of interest.
+# Usage:
+#      cohesiveness(v = NULL, net, p = 0.1)
+
+# Arguments:
+#       v: A node/protein name which will be removed (by default NULL, i.e., none of nodes will be removed and the cohesiveness value will be of complete network).
+
+#     net: An igraph graph object.
+
+#       p: A penalty term which measures the inaccuracy of the network interaction. The default value of p is set to 0.1.
+
+# Value:
+#     A single numeric value.
+
+# Example:
+# Cohesiveness of complete network:
+coh.cent <- cohesiveness(net = bc.net)
+coh.cent
+
+# Cohesiveness of a network after removal of a particular node, e.g., "UBC":
+coh.cent <- cohesiveness(v = "UBC", net = bc.net)
+coh.cent
 ```
 
 ```{r}
-#Compactness of complete network:
-#com.cent <- compactness(net = bc.net)
+# Compactness of network based on the presence of all maximal 3-node cliques either in the complete network or in the network after the removal of a node of interest.
+# Usage:
+#      compactness(v = NULL, net, p = 0.1)
 
-#Compactness of a network after removal of a particular node, e.g., "UBC":
-#com.cent <- compactness(v = "UBC", net = bc.net)
+# Arguments:
+#       v: A node/protein name which will be removed (by default NULL, i.e., none of nodes will be removed and the compactness value will be of complete network).
+
+#     net: An igraph graph object.
+
+#       p: A penalty term which measures the inaccuracy of the network interaction. The default value of p is set to 0.1.
+
+# Value:
+#      A single numeric value.
+
+# Example:
+# Compactness of complete network:
+com.cent <- compactness(net = bc.net)
+com.cent
+
+# Compactness of a network after removal of a particular node, e.g., "UBC":
+com.cent <- compactness(v = "UBC", net = bc.net)
+com.cent
 ```
 
 ## Where to go next

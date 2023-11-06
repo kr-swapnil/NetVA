@@ -8,7 +8,8 @@ netva(vl, net, ncore = 1)
 }
 \arguments{
 \item{vl}{A character vector of node or protein names or list of vectors having two nodes (node pairs/edges) or more than two nodes.
-If input is vector, only one node will be deleted at once. However, if the input is list, n nodes will be deleted at once, where n is #' the length of each element of the list.}
+If input is vector, only one node will be deleted at once. However, if the input is list, n nodes will be deleted at once, where n is
+the length of each element of the list.}
 
 \item{net}{An igraph graph object.}
 

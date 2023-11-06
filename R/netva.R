@@ -43,7 +43,8 @@ nva <- function(v, net){
 #' normal mode only despite providing ncore value more than one and may take more computing time.
 #'
 #' @param vl A character vector of node or protein names or list of vectors having two nodes (node pairs/edges) or more than two nodes. 
-#' If input is vector, only one node will be deleted at once. However, if the input is list, n nodes will be deleted at once, where n is #' the length of each element of the list.
+#' If input is vector, only one node will be deleted at once. However, if the input is list, n nodes will be deleted at once, where n is 
+#' the length of each element of the list.
 #' @param net An igraph graph object.
 #' @param ncore Number of cores users want to use for the computation.
 #' @return A dataframe having number of rows equal to length(vl) with fourteen columns.
