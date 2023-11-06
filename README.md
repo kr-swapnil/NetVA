@@ -17,10 +17,10 @@ Vignette: Available
 
 <b>Installation</b>: The NetVA package can be installed in two ways on the R console using:
 
-<b>1.</b> Installation without the vignette
+<b>Installation without the vignette</b>
 > devtools::install_github("kr-swapnil/NetVA")
 
-<b>2.</b> Installation with the vignette
+<b>Or, with the vignette</b>
 > devtools::install_github("kr-swapnil/NetVA", build_vignettes = TRUE)
 
 <b>How to access/browse vignettes</b>: 
