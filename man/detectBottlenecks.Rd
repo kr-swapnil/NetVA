@@ -30,7 +30,7 @@ detectBottlenecks(
 \item{ng}{Number of new graphs/networks to be constructed. The default value is the value of iter.}
 }
 \value{
-A numeric vector containing all possible bottlenecks with bottleneck proteins' names and corresponding betweenness values as identified in the given network.
+If validate = TRUE, a list with two (named) numeric vectors, first containing all possible bottlenecks with their betweenness values before edge perturbation and second containing all possible bottlenecks with their betweenness values (from the original network) after the edge perturbation. Otherwise, a (named) numeric vector with all possible bottlenecks with their corresponding betweenness values as identified in the given network.
 }
 \description{
 Identify all possible bottlenecks based on the pareto principle of Eighty-twenty rule (by default) for a given network

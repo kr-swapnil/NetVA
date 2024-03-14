@@ -16,20 +16,20 @@ nva <- function(v, net){
 	
 	g <- igraph::delete.vertices(net, v)
   	
-	nva.res[2] <- mean(igraph::betweenness(g))
-	nva.res[3] <- mean(igraph::closeness(g), na.rm=T)
-	nva.res[5] <- mean(igraph::eccentricity(g))
+	nva.res[1] <- mean(igraph::betweenness(g))
+	nva.res[2] <- mean(igraph::closeness(g), na.rm=T)
+	nva.res[3] <- mean(igraph::eccentricity(g))
 	nva.res[4] <- mean(igraph::degree(g))
-	nva.res[6] <- igraph::average.path.length(g)
-	nva.res[1] <- igraph::clusters(g)$no
+	nva.res[5] <- igraph::average.path.length(g)
+	nva.res[6] <- igraph::components(g)$no
 	nva.res[7] <- igraph::transitivity(g)
 	nva.res[8] <- cohesiveness(v, net)
 	nva.res[9] <- compactness(v, net)
 	nva.res[10] <- igraph::global_efficiency(g)
-	nva.res[14] <- heterogeneity(g)
-	nva.res[11] <- igraph::centr_degree(g)$centralization
-	nva.res[12] <- igraph::graph.density(g)
-	nva.res[13] <- igraph::diameter(g)
+	nva.res[11] <- heterogeneity(g)
+	nva.res[12] <- igraph::centr_degree(g)$centralization
+	nva.res[13] <- igraph::graph.density(g)
+	nva.res[14] <- igraph::diameter(g)
 	
 	return(nva.res)
 }
@@ -65,14 +65,14 @@ netva <- function(vl, net, ncore = 1){
 		}
 		nva.df <- data.frame(matrix(unlist(res), byrow=T, nrow=length(res), ncol=14))
 		
-		vl2 = c()
+		vl2 <- c()
 		for(i in 1:length(vl)){
 			if(class(vl[[i]]) == "igraph.vs"){
-				j = paste(igraph::as_ids(vl[[i]]), sep = "", collapse = " ")
+				j <- paste(igraph::as_ids(vl[[i]]), sep = "", collapse = " ")
 			}else{
-				j = paste(vl[[i]], sep = "", collapse = " ")
+				j <- paste(vl[[i]], sep = "", collapse = " ")
 			}
-			vl2 = c(vl2, j)
+			vl2 <- c(vl2, j)
 		}
 		
 		rownames(nva.df) <- vl2
@@ -108,22 +108,22 @@ cohesiveness <- function(v = NULL, net, p = 0.1){
 	if(length(v) == 0){
 		#Calculating cohesiveness of complete network (default)
 		subnet <- net
-		twe.wisubnet <- sum(strength(subnet))
-		twe.wosubnet <- sum(strength(net, vids = vertex_attr(subnet)$name))
+		twe.wisubnet <- sum(igraph::strength(subnet))
+		twe.wosubnet <- sum(igraph::strength(net, vids = igraph::vertex_attr(subnet)$name))
 	}else{
 		#Calculating cohesiveness of subnetwork after removal of v
-		cl <- clusters(net)
+		cl <- igraph::components(net)
 		if(class(v) == "igraph.vs"){
-			v = as_ids(v)
+			v <- igraph::as_ids(v)
 			i <- which(names(cl$membership) %in% v)
 		}else{
 			i <- which(names(cl$membership) %in% v)
 		}
 		#i <- which(names(cl$membership) %in% v)
-		subnet <- subgraph(net, which(cl$membership == cl$membership[[i]]))
-		subnet <- delete.vertices(subnet, v)
-		twe.wisubnet <- sum(strength(subnet))
-		twe.wosubnet <- sum(strength(delete.vertices(net, v), vids = vertex_attr(subnet)$name))
+		subnet <- igraph::subgraph(net, which(cl$membership %in% cl$membership[i]))
+		subnet <- igraph::delete.vertices(subnet, v)
+		twe.wisubnet <- sum(igraph::strength(subnet))
+		twe.wosubnet <- sum(igraph::strength(igraph::delete.vertices(net, v), vids = igraph::vertex_attr(subnet)$name))
 	}
 	cohe.cent <- twe.wisubnet/(twe.wosubnet + p)
 	return(cohe.cent)
@@ -142,23 +142,23 @@ compactness <- function(v = NULL, net, p = 0.1){
 	if(length(v) == 0){
 		#Calculating compactness of complete network (default)
 		subnet <- net
-		tnc.wisubnet <- length(max_cliques(subnet, 3, 3))
-		tnc.wosubnet <- length(max_cliques(net, 3, 3, vertex_attr(subnet)$name))
+		tnc.wisubnet <- length(igraph::max_cliques(subnet, 3, 3))
+		tnc.wosubnet <- length(igraph::max_cliques(net, 3, 3, igraph::vertex_attr(subnet)$name))
 	}else{
 		#Calculating compactness of subnetwork after removal of v
-		cl <- clusters(net)
+		cl <- igraph::components(net)
 		if(class(v) == "igraph.vs"){
-			v = as_ids(v)
+			v <- igraph::as_ids(v)
 			i <- which(names(cl$membership) %in% v)
 		}else{
 			i <- which(names(cl$membership) %in% v)
 		}
 		#i <- which(names(cl$membership) %in% v)
-		subnet <- subgraph(net, which(cl$membership == cl$membership[[i]]))
-		subnet <- delete.vertices(subnet, v)
-		tnc.wisubnet <- length(max_cliques(subnet, 3, 3))
+		subnet <- igraph::subgraph(net, which(cl$membership %in% cl$membership[i]))
+		subnet <- igraph::delete.vertices(subnet, v)
+		tnc.wisubnet <- length(igraph::max_cliques(subnet, 3, 3))
 		#vnc.subnet <- length(max_cliques(subnet, 3, 3, v))
-		tnc.wosubnet <- length(max_cliques(delete.vertices(net, v), 3, 3, vertex_attr(subnet)$name))
+		tnc.wosubnet <- length(igraph::max_cliques(igraph::delete.vertices(net, v), 3, 3, igraph::vertex_attr(subnet)$name))
 	}
 	comp.cent <- tnc.wisubnet/(tnc.wosubnet + p)
 	return(comp.cent)

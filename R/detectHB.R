@@ -8,7 +8,7 @@
 #' @param perturb Percentage value to rewire edges.
 #' @param iter Number of iterations to perform rewiring and construction of new rewired networks. The default value is round(100/perturb).
 #' @param ng Number of new graphs/networks to be constructed. The default value is the value of iter.
-#' @return A numeric vector containing all possible hubs with hub proteins' names and corresponding degree values as identified in the given network.
+#' @return If validate = TRUE, a list with two (named) numeric vectors, first containing all possible hubs with their degree values before edge perturbation and second containing all possible hubs with their degree values (from the original network) after the edge perturbation. Otherwise, a (named) numeric vector with all possible hubs with their corresponding degree values as identified in the given network.
 #' @export
 detectHubs <- function(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter){
 	d <- igraph::degree(net)
@@ -23,13 +23,17 @@ detectHubs <- function(net, method = "ETP", p = 20, validate = TRUE, perturb = 5
 		pg <- perturbNet(g = net, p = perturb, iter)
 		for(i in 1:length(pg)){
 			kn <- detectkn(g = pg[[i]], t = degree(pg[[i]]), p)
-			kn.vec = c(kn.vec, names(kn))
+			kn.vec <- c(kn.vec, names(kn))
 		}
-		kn.pg = kn.vec[which(table(kn.vec) == ng)]
+		kn.pg <- kn.vec[which(table(kn.vec) == ng)]
+		hubs2 <- intersect(names(hubs), kn.pg)
+		hub.list <- list(hubs.bp = hubs, hubs.ap = hubs[hubs2])
+		return(hub.list)
+	}else{
+		hub.list <- hubs
+		return(hub.list)
 	}
-	hubs2 <- intersect(names(hubs), kn.pg)
-	hub.list <- list(hubs.bp = hubs, hubs.ap = hubs[hubs2])
-	return(hub.list)
+	
 }
 
 #' Identify all possible bottlenecks based on the pareto principle of Eighty-twenty rule (by default) for a given network
@@ -41,7 +45,7 @@ detectHubs <- function(net, method = "ETP", p = 20, validate = TRUE, perturb = 5
 #' @param perturb Percentage value to rewire edges.
 #' @param iter Number of iterations to perform rewiring and construction of new rewired networks. The default value is round(100/perturb).
 #' @param ng Number of new graphs/networks to be constructed. The default value is the value of iter.
-#' @return A numeric vector containing all possible bottlenecks with bottleneck proteins' names and corresponding betweenness values as identified in the given network.
+#' @return If validate = TRUE, a list with two (named) numeric vectors, first containing all possible bottlenecks with their betweenness values before edge perturbation and second containing all possible bottlenecks with their betweenness values (from the original network) after the edge perturbation. Otherwise, a (named) numeric vector with all possible bottlenecks with their corresponding betweenness values as identified in the given network.
 #' @export
 detectBottlenecks <- function(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter){
 	b <- igraph::betweenness(net)
@@ -52,17 +56,21 @@ detectBottlenecks <- function(net, method = "ETP", p = 20, validate = TRUE, pert
 	}
 	
 	if(validate == TRUE){
-		kn.vec = c()
+		kn.vec <- c()
 		pg <- perturbNet(g = net, p = perturb, iter)
 		for(i in 1:length(pg)){
-			kn <- detectkn(g = pg[[i]], t = betweenness(pg[[i]]), p)
-			kn.vec = c(kn.vec, names(kn))
+			kn <- detectkn(g = pg[[i]], t = igraph::betweenness(pg[[i]]), p)
+			kn.vec <- c(kn.vec, names(kn))
 		}
-		kn.pg = kn.vec[which(table(kn.vec) == ng)]
+		kn.pg <- kn.vec[which(table(kn.vec) == ng)]
+		bottlenecks2 <- intersect(names(bottlenecks), kn.pg)
+		bot.list <- list(bottlenecks.bp = bottlenecks, bottlenecks.ap = bottlenecks[bottlenecks2])
+		return(bot.list)
+	}else{
+		bot.list <- bottlenecks
+		return(bot.list)
 	}
-	bottlenecks2 <- intersect(names(bottlenecks), kn.pg)
-	bot.list <- list(bottlenecks.bp = bottlenecks, bottlenecks.ap = bottlenecks[bottlenecks2])
-	return(bot.list)
+	
 }
 
 #' Identify key nodes for a given network based on either degree or betweenness values
@@ -94,24 +102,24 @@ detectkn <- function(g, t, p){
 #' @return A list of newly constructed graphs and there will be n graphs in this list, where n is equal to the value of iter.
 #' @noRd
 perturbNet <- function(g, p, iter){
-	n = round(ecount(g)*(p/100))
-	on.el = as_edgelist(g)
-	temp.el = on.el
-	on.el = as.data.frame(on.el)
-	gl = vector("list", iter)
+	n <- round(igraph::ecount(g)*(p/100))
+	on.el <- igraph::as_edgelist(g)
+	temp.el <- on.el
+	on.el <- as.data.frame(on.el)
+	gl <- vector("list", iter)
 	for(i in 1:iter){
 		if(n <= nrow(temp.el)){
-			j = sample(nrow(temp.el), n)
+			j <- sample(nrow(temp.el), n)
 		}else{
-			j = sample(nrow(temp.el))
+			j <- sample(nrow(temp.el))
 		}
-		br.el = as.data.frame(temp.el[j,])
-		ar.el = transform(br.el, V1 = sample(V1))
-		rem.el = setdiff(on.el, br.el)
-		mut.el = rbind(rem.el, ar.el)
-		mut.net = graph.data.frame(mut.el, directed=F)
-		gl[[i]] = mut.net
-		temp.el = temp.el[-j,]
+		br.el <- as.data.frame(temp.el[j,])
+		ar.el <- transform(br.el, V1 = sample(V1))
+		rem.el <- setdiff(on.el, br.el)
+		mut.el <- rbind(rem.el, ar.el)
+		mut.net <- igraph::graph.data.frame(mut.el, directed=F)
+		gl[[i]] <- mut.net
+		temp.el <- temp.el[-j,]
 	}
 	return(gl)
 }

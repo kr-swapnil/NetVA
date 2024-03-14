@@ -30,7 +30,7 @@ detectHubs(
 \item{ng}{Number of new graphs/networks to be constructed. The default value is the value of iter.}
 }
 \value{
-A numeric vector containing all possible hubs with hub proteins' names and corresponding degree values as identified in the given network.
+If validate = TRUE, a list with two (named) numeric vectors, first containing all possible hubs with their degree values before edge perturbation and second containing all possible hubs with their degree values (from the original network) after the edge perturbation. Otherwise, a (named) numeric vector with all possible hubs with their corresponding degree values as identified in the given network.
 }
 \description{
 Identify all possible hubs based on the pareto principle of Eighty-twenty rule (by default) for a given network

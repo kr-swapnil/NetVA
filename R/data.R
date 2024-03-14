@@ -28,7 +28,7 @@ NULL
 #' Output of netva function for all VIPs in the breast cancer PPIN from two nodes approach
 #'
 #' 
-#' An dataframe with 25838 rows (proteins pairs) and 14 columns (topological properties).
+#' An dataframe with 25838 rows (protein pairs) and 14 columns (topological properties).
 #'
 #' 
 #' @name netva_res_2n
@@ -37,5 +37,19 @@ NULL
 #'
 #' @keywords output-datasets
 #' @references netva_res_2n = netva(vl, bc.net, ncore = 30).
+NULL
+
+#' Output of netva function for all VIPs in the breast cancer PPIN from three nodes approach
+#'
+#' 
+#' An dataframe with 251270 rows (protein triplets) and 14 columns (topological properties).
+#'
+#' 
+#' @name netva_res_3n
+#' @docType data
+#' @title Output of netva function as dataframe for all VIPs in the breast cancer PPIN from three nodes approach.
+#'
+#' @keywords output-datasets
+#' @references netva_res_3n = netva(vl, bc.net, ncore = 30).
 NULL
 

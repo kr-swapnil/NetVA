@@ -6,14 +6,14 @@ citEntry(entry = "Article",
                                    as.person("Grace Pauline"),
                                    as.person("Vaibhav Vindal")
          ),
-         journal = "bioRxiv",
-         year = "2023",
-         publisher = "Cold Spring Harbor Laboratory",
-         doi = "https://doi.org/10.1101/2023.07.31.551200",
-         url = "https://www.biorxiv.org/content/10.1101/2023.07.31.551200",
+         journal = "Journal of Biomolecular Structure and Dynamics",
+         year = "2024",
+         publisher = "Taylor & Francis",
+         doi = "https://doi.org/10.1080/07391102.2024.2303607",
+         url = "https://www.tandfonline.com/doi/full/10.1080/07391102.2024.2303607",
          textVersion =
              paste("Swapnil Kumar, Grace Pauline, Vaibhav Vindal.",
                    "NetVA: an R package for network vulnerability and influence analysis.",
-                   "bioRxiv (31 July 2023). (doi:10.1101/2023.07.31.551200)")
+                   "Journal of Biomolecular Structure and Dynamics (17 January 2024). (doi: https://doi.org/10.1080/07391102.2024.2303607)")
 )
 

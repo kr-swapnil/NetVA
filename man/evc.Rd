@@ -20,8 +20,8 @@ A list of two vectors: (1) evc, containing the values of EVC and
 (2) evc.plus, the values of EVC+ of each vertex in the network.
 }
 \description{
-Calculates escape velocity centrality (EVC, evc) and extended escape velocity centrality (EVC+, evc.plus)
-of all vertices in the network under study \link{Ullah et al., 2022}.
+Calculates escape velocity centrality (EVC/evc) and extended escape velocity centrality (EVC+/evc.plus)
+of all vertices in the network under study.
 }
 \references{
 Ullah A. et al. (2022). Escape velocity centrality: escape influence-based key nodes identification in complex networks, Applied Intelligence, 1-19.
