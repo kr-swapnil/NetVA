@@ -22,13 +22,13 @@
 #' @export
 detectVNs <- function(v, t, p){
 	n <- length(t)
-	Q2 <- median(t)
+	Q2 <- stats::median(t)
 	if((n%%2) == 0){
-		Q1 <- median(sort(t, decreasing=F)[1:(n/2)])
-		Q3 <- median(sort(t, decreasing=F)[((n/2)+1):n])
+		Q1 <- stats::median(sort(t, decreasing=F)[1:(n/2)])
+		Q3 <- stats::median(sort(t, decreasing=F)[((n/2)+1):n])
 	}else{
-		Q1 <- median(sort(t, decreasing=F)[1:((n-1)/2)])
-		Q3 <- median(sort(t, decreasing=F)[(((n-1)/2)+2):n])
+		Q1 <- stats::median(sort(t, decreasing=F)[1:((n-1)/2)])
+		Q3 <- stats::median(sort(t, decreasing=F)[(((n-1)/2)+2):n])
 	}
 	IQR <- Q3 - Q1
 	

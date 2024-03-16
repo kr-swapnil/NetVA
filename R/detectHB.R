@@ -12,26 +12,26 @@
 #' @export
 detectHubs <- function(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter){
 	d <- igraph::degree(net)
-	if(method == "ETP"){
+	if(method == "ETP" & validate %in% c(TRUE, FALSE)){
 		hubs <- detectkn(g = net, t = d, p)
-	}else{
-		print("Wrong method value!\n")
-	}
-	
-	if(validate == TRUE){
-		kn.vec = c()
-		pg <- perturbNet(g = net, p = perturb, iter)
-		for(i in 1:length(pg)){
-			kn <- detectkn(g = pg[[i]], t = degree(pg[[i]]), p)
-			kn.vec <- c(kn.vec, names(kn))
+		
+		if(validate == TRUE){
+			kn.vec = c()
+			pg <- perturbNet(g = net, p = perturb, iter)
+			for(i in 1:length(pg)){
+				kn <- detectkn(g = pg[[i]], t = igraph::degree(pg[[i]]), p)
+				kn.vec <- c(kn.vec, names(kn))
+			}
+			kn.pg <- kn.vec[which(table(kn.vec) == ng)]
+			hubs2 <- intersect(names(hubs), kn.pg)
+			hub.list <- list(hubs.bp = hubs, hubs.ap = hubs[hubs2])
+			return(hub.list)
+		}else{
+			hub.list <- hubs
+			return(hub.list)
 		}
-		kn.pg <- kn.vec[which(table(kn.vec) == ng)]
-		hubs2 <- intersect(names(hubs), kn.pg)
-		hub.list <- list(hubs.bp = hubs, hubs.ap = hubs[hubs2])
-		return(hub.list)
 	}else{
-		hub.list <- hubs
-		return(hub.list)
+		print("Wrong method/validate value!")
 	}
 	
 }
@@ -49,26 +49,26 @@ detectHubs <- function(net, method = "ETP", p = 20, validate = TRUE, perturb = 5
 #' @export
 detectBottlenecks <- function(net, method = "ETP", p = 20, validate = TRUE, perturb = 5, iter = round(100/perturb), ng = iter){
 	b <- igraph::betweenness(net)
-	if(method == "ETP"){
+	if(method == "ETP" & validate %in% c(TRUE, FALSE)){
 		bottlenecks <- detectkn(g = net, t = b, p)
-	}else{
-		print("Wrong method value!\n")
-	}
-	
-	if(validate == TRUE){
-		kn.vec <- c()
-		pg <- perturbNet(g = net, p = perturb, iter)
-		for(i in 1:length(pg)){
-			kn <- detectkn(g = pg[[i]], t = igraph::betweenness(pg[[i]]), p)
-			kn.vec <- c(kn.vec, names(kn))
+		
+		if(validate == TRUE){
+			kn.vec <- c()
+			pg <- perturbNet(g = net, p = perturb, iter)
+			for(i in 1:length(pg)){
+				kn <- detectkn(g = pg[[i]], t = igraph::betweenness(pg[[i]]), p)
+				kn.vec <- c(kn.vec, names(kn))
+			}
+			kn.pg <- kn.vec[which(table(kn.vec) == ng)]
+			bottlenecks2 <- intersect(names(bottlenecks), kn.pg)
+			bot.list <- list(bottlenecks.bp = bottlenecks, bottlenecks.ap = bottlenecks[bottlenecks2])
+			return(bot.list)
+		}else{
+			bot.list <- bottlenecks
+			return(bot.list)
 		}
-		kn.pg <- kn.vec[which(table(kn.vec) == ng)]
-		bottlenecks2 <- intersect(names(bottlenecks), kn.pg)
-		bot.list <- list(bottlenecks.bp = bottlenecks, bottlenecks.ap = bottlenecks[bottlenecks2])
-		return(bot.list)
 	}else{
-		bot.list <- bottlenecks
-		return(bot.list)
+		print("Wrong method/validate value!")
 	}
 	
 }

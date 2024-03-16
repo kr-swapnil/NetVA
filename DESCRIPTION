@@ -6,7 +6,7 @@ Date: 2022-02-04
 Author: Swapnil Kumar, Grace Pauline, Vaibhav Vindal
 Maintainer: Swapnil Kumar <swapnil.kr@yahoo.com>
 Depends: R (>= 3.0.0), igraph
-Imports: parallel
+Imports: parallel, stats, utils
 Suggests: knitr, rmarkdown
 Description: Performs network vulnerability analysis and help to identify vulnerable or critical proteins (VPs), protein pairs (VPPs), and 
 	protein triplets (VPTs) for a given protein-protein interaction (PPI) network. Hence, network vulnerability analysis is an approach 
@@ -27,5 +27,4 @@ LazyLoad: yes
 Packaged: 2022-01-27 14:45:21 IST
 NeedsCompilation: no
 Repository: GitHub, CRAN
-Date/Publication: 2022-01-29 00:34:42
-LazyData: true
+Date/Publication: 2024-01-17

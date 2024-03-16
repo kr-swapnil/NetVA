@@ -25,7 +25,7 @@ evc <- function(g, alpha = 1, mode = "all"){
 	ks <- igraph::coreness(g, mode)
 	v <- igraph::vertex_attr(g)$name
 	
-	pb <- txtProgressBar(min = 0, max = nv, style = 3, width = 50, char = "=")
+	pb <- utils::txtProgressBar(min = 0, max = nv, style = 3, width = 50, char = "=")
 	
 	for(i in 1:nv){
 		r1 <- 0
@@ -47,7 +47,7 @@ evc <- function(g, alpha = 1, mode = "all"){
 		evc.vec2 <- c(evc.vec2, r2)
 		n <- c(n, v[i])
 		
-		setTxtProgressBar(pb, i)
+		utils::setTxtProgressBar(pb, i)
 	}
 	close(pb)
 	

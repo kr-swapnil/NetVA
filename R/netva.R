@@ -90,7 +90,7 @@ netva <- function(vl, net, ncore = 1){
 #' @export
 heterogeneity <- function(net){
 	d <- igraph::degree(net)
-	het <- sqrt(var(d))/mean(d)
+	het <- sqrt(stats::var(d))/mean(d)
 	return(het)
 }
 
