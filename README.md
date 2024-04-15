@@ -31,23 +31,23 @@ or, with the vignette
 
 <b>Available functions</b>:
 	
-  netva(): Performs vulnerability analysis with or without parallel processing. Parallel processing works only on Linux/macOS machines but not on Windows-based machines.
+  <b>netva()</b>: Performs vulnerability analysis with or without parallel processing. Parallel processing works only on Linux/macOS machines but not on Windows-based machines.
   
-  detectVNs(): Detects VPs based on the five-point summary of the boxplot for each topological property included in the package.
+  <b>detectVNs()</b>: Detects VPs based on the five-point summary of the boxplot for each topological property included in the package.
   
-  evc(): Calculates EVC and EVC+ values of each node present in a given network.
+  <b>evc()</b>: Calculates EVC and EVC+ values of each node present in a given network.
   
-  detectINs(): Detects influential nodes i.e. proteins based on the values of EVC and EVC+ for a given network.
+  <b>detectINs()</b>: Detects influential nodes i.e. proteins based on the values of EVC and EVC+ for a given network.
   
-  detectHubs(): Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified hubs against PPI data noise using rewiring of a given percentage of edges as per the user's choice in the network.
+  <b>detectHubs()</b>: Identify hub proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified hubs against PPI data noise using rewiring of a given percentage of edges as per the user's choice in the network.
   
-  detectBottlenecks(): Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified bottlenecks against PPI data noise using rewiring of a given percentage of edges as per the user's choice in the network.
+  <b>detectBottlenecks()</b>: Identify bottleneck proteins in the given network based on the Pareto-principle of 80:20 rule followed by tuning of identified bottlenecks against PPI data noise using rewiring of a given percentage of edges as per the user's choice in the network.
 	
-  heterogeneity(): Calculates the value of heterogeneity for a given network.
+  <b>heterogeneity()</b>: Calculates the value of heterogeneity for a given network.
   
-  cohesiveness(): Calculates the cohesiveness of a given network as it is or after the removal of a node of interest.
-
-  compactness(): Calculates the compactness of a given network as it is or after the removal of a node of interest.
+  <b>cohesiveness()</b>: Calculates the cohesiveness of a given network as it is or after the removal of a node of interest.
+  
+  <b>compactness()</b>: Calculates the compactness of a given network as it is or after the removal of a node of interest.
 
 <b>Issues/Bug reports</b> 
 Report any issues or bugs to https://github.com/kr-swapnil/NetVA/issues.
