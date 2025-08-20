@@ -54,5 +54,8 @@ Report any issues or bugs to https://github.com/kr-swapnil/NetVA/issues.
 
 <b>How to cite</b>
 
-If you find NetVA useful, please cite the following publication:
-<i>Kumar S, Pauline G, Vindal V. NetVA: an R package for network vulnerability and influence analysis. J Biomol Struct Dyn. 2024 Jan 17:1-12. doi: 10.1080/07391102.2024.2303607. PMID: 38234040.</i>
+If you find NetVA useful, please cite the following publications:
+<i>Kumar S, Pauline G, Vindal V. NetVA: an R package for network vulnerability and influence analysis. Journal of Biomolecular Structure and Dynamics, 2024, 43(9), 4552-4563. https://doi.org/10.1080/07391102.2024.2303607</i>
+
+Other publications implementing NetVA
+<i>Kumar S, Agrawal A, Vindal V. Exploring vulnerable building blocks in protein-protein interaction networks of breast tumor and adjacent normal tissues. bioRxiv, 2025,  2025.02.26.640272. https://doi.org/10.1101/2025.02.26.640272</i>
