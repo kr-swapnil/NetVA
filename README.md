@@ -52,10 +52,14 @@ or
 <b>Issues/Bug reports</b> 
 Report any issues or bugs to https://github.com/kr-swapnil/NetVA/issues.
 
-<b>How to cite</b>
+<b>Citing & known uses</b>
 
-If you find NetVA useful, please cite the following publications:
-<i>Kumar S, Pauline G, Vindal V. NetVA: an R package for network vulnerability and influence analysis. Journal of Biomolecular Structure and Dynamics, 2024, 43(9), 4552-4563. https://doi.org/10.1080/07391102.2024.2303607</i>
+If you use NetVA, please cite the following publications:
+1. <i>Kumar S, Pauline G, Vindal V. NetVA: an R package for network vulnerability and influence analysis. Journal of Biomolecular Structure and Dynamics, 2024, 43(9), 4552-4563. https://doi.org/10.1080/07391102.2024.2303607</i>
 
-Other publications implementing NetVA:
-<i>Kumar S, Agrawal A, Vindal V. Exploring vulnerable building blocks in protein-protein interaction networks of breast tumor and adjacent normal tissues. bioRxiv, 2025,  2025.02.26.640272. https://doi.org/10.1101/2025.02.26.640272</i>
+2. <i>Kumar S, Agrawal A, Vindal V. Exploring vulnerable building blocks in protein-protein interaction networks of breast tumor and adjacent normal tissues. Computational Biology and Chemistry, 2025, 108647.</i>
+
+So far, NetVA has been utilized/referenced in the following publications:
+1. <i>Wang Q, Chen Y, Liu Y, Xie B, Deng H, Meng F, Wang N, Xiong D, Chen Y, Wei Z, Dong P. Investigation of clinical features, differential gene expression, and immune infiltration in female genital tuberculosis using RNA sequencing and bioinformatics analysis. Human Gene, 2026, 201538.</i>
+
+2. <i>Kumar S, Vindal V. Architecture and topologies of gene regulatory networks associated with breast cancer, adjacent normal, and normal tissues. Functional & Integrative Genomics, 2023, 23(4), 324.</i>
